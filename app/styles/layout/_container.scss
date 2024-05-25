@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  padding: 0;
+  margin: 1rem auto;
+
+  @include respond-to("small") {
+    max-width: 540px;
+  }
+  @include respond-to("medium") {
+    max-width: 720px;
+  }
+  @include respond-to("large") {
+    max-width: 960px;
+  }
+  @include respond-to("xlarge") {
+    max-width: 1140px;
+  }
+  @include respond-to("xxlarge") {
+    max-width: 1320px;
+  }
+}

@@ -1,0 +1,94 @@
+.parallax__container1,
+.parallax__container2,
+.parallax__container3 {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  & .paralax__caption {
+    position: absolute;
+    left: 0;
+    top: calc(50% - 200px);
+    width: 100%;
+    text-align: center;
+    color: #000;
+
+    & h1 {
+      background-color: $color-gray-100;
+      padding: 12px;
+      font-size: 3rem;
+
+      @include respond-to("medium") {
+        padding: 18px;
+        letter-spacing: 3px;
+        font-size: 4rem;
+      }
+    }
+    & h2 {
+      color: $color-white;
+      text-shadow: 4px 4px 9px rgba(0, 0, 0, 0.6);
+      font-size: 2rem;
+
+      @include respond-to("medium") {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+
+.parallax__container1 {
+  background-image: url("/parallax-background1.jpg");
+  min-height: 100%;
+}
+
+.parallax__container2 {
+  background-image: url("/parallax-background2.jpg");
+  min-height: 400px;
+}
+
+.parallax__container3 {
+  background-image: url("/parallax-background3.jpg");
+  min-height: 400px;
+}
+
+.parallax__container4 {
+  & .paralax__caption {
+    padding-left: 1rem;
+
+    & h1 {
+      background-color: $color-gray-100;
+      padding: 12px;
+      font-size: 3rem;
+
+      @include respond-to("medium") {
+        padding: 18px;
+        letter-spacing: 3px;
+        font-size: 4rem;
+      }
+    }
+    & h2 {
+      color: $color-white;
+      padding: 12px;
+      text-shadow: 4px 4px 9px rgba(0, 0, 0, 0.6);
+      font-size: 2rem;
+
+      @include respond-to("medium") {
+        padding: 18px;
+        font-size: 3rem;
+      }
+    }
+  }
+}
+
+.parallax__buffer {
+  background-color: $color-white;
+  text-align: center;
+  padding: 20px 10px;
+  text-align: justify;
+
+  @include respond-to("medium") {
+    padding: 50px 60px;
+  }
+}

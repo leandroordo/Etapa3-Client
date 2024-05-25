@@ -1,0 +1,83 @@
+// -----------------------------------------------------------------------------
+// Estilos del banner de la página principal
+// -----------------------------------------------------------------------------
+.banner__item {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  margin-right: -0.75rem;
+  margin-left: -0.75rem;
+
+  & > * {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+  }
+}
+
+.banner__image-container {
+  position: relative;
+
+  @include respond-to("medium") {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    flex: 0 0 auto;
+    width: 50%;
+  }
+}
+
+.banner__image-container img {
+  margin-bottom: 0;
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  display: none;
+
+  @include respond-to("large") {
+    margin-bottom: 0;
+    display: block;
+  }
+}
+
+.banner__text-container {
+  @include respond-to("small") {
+    flex: 0 0 auto;
+    width: 83%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @include respond-to("medium") {
+    flex: 0 0 auto;
+    width: 92%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  @include respond-to("large") {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  border-radius: 1rem;
+  border: 1px solid #dee2e6;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: $color-gray-100;
+
+  & h1 {
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+}
+
+.banner__text-smaller {
+  color: $color-gray-500;
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
