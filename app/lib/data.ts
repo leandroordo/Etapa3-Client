@@ -13,6 +13,7 @@ export const fetchProducts = async (): Promise<Product[]> => {
         "Content-Type": "application/json",
         //Authorization: `Bearer ${API_TOKEN}`,
       },
+      cache: "no-store",
     });
 
     const json = await res.json();
