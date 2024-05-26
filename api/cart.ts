@@ -39,6 +39,7 @@ export const addToCart = async (product: Product): Promise<Cart> => {
         price: product.price,
         quantity: 1,
         photo: product.photo,
+        contentType: product.contentType,
       });
     } else {
       //Si cartId no está vacío, ya se ha creado el cart en el servidor
@@ -55,6 +56,7 @@ export const addToCart = async (product: Product): Promise<Cart> => {
           price: product.price,
           quantity: 1,
           photo: product.photo,
+          contentType: product.contentType,
         });
       }
 

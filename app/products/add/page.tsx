@@ -174,7 +174,7 @@ const AddProductPage = () => {
                 </div>
                 <div className="form__row">
                   <FormControl
-                    inputType="text"
+                    inputType="imagefile"
                     label="Fotografía"
                     name="photo"
                     required={true}

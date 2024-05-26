@@ -61,7 +61,7 @@ export default function CartPopup({
               <li key={index} className="cart__item">
                 <div className="cart__itemimage">
                   <Image
-                    src={product.photo}
+                    src={`data:${product.contentType};base64,${product.photo}`}
                     alt={product.name}
                     width={100}
                     height={86}

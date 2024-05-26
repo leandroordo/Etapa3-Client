@@ -45,6 +45,15 @@ const FormControl = (props: FormControlProps) => {
           maxLength={props.maxLength || 1000}
           placeholder={props.placeHolder || ""}
         />
+      ) : props.inputType === "imagefile" ? (
+        <input
+          type="file"
+          name={props.name}
+          id={props.name}
+          className="form__control"
+          required={props.required || false}
+          accept="image/*"
+        />
       ) : (
         <></>
       )}

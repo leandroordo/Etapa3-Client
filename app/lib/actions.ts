@@ -1,12 +1,19 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { ContactMessage, Product } from "./model";
 import { z } from "zod";
 import {
   AddContactMessageActionResult,
   AddProductActionResult,
 } from "@/api/types";
+
+const ACCEPTED_IMAGE_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+];
+const MAX_FILE_SIZE = 5000000;
 
 const addProductSchema = z.object({
   name: z
@@ -63,15 +70,18 @@ const addProductSchema = z.object({
     })
     .gte(0, { message: "La edad hasta debe ser cero o mayor a cero" })
     .lte(99, { message: "La edad hasta es muy grande" }),
+
   photo: z
-    .string({
-      invalid_type_error: "La dirección URL de la foto no es válida",
-      description: "URL de la foto del producto",
-      required_error: "La dirección URL de la foto es obligatoria2",
-    })
-    .min(8, { message: "La dirección URL de la foto es muy corta" })
-    .max(255, { message: "LLa dirección URL de la foto es muy larga" })
-    .url({ message: "La dirección URL de la foto no es válida" }),
+    .any()
+    .refine((file) => {
+      if (file.size === 0 || file.name === undefined) return false;
+      else return true;
+    }, "Seleccione una imagen")
+    .refine(
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+      "Solo se permiten archivos con extensiones .jpg, .jpeg, .png o .webp"
+    )
+    .refine((file) => file.size <= MAX_FILE_SIZE, `Max file size is 5MB.`),
 });
 
 const addContactMessageSchema = z.object({
@@ -107,6 +117,16 @@ const addContactMessageSchema = z.object({
     })
     .max(4000, { message: "Escriba un mensaje o consulta un poco más corto" }),
 });
+
+function _arrayBufferToBase64(buffer: ArrayBuffer) {
+  var binary = "";
+  var bytes = new Uint8Array(buffer);
+  var len = bytes.byteLength;
+  for (var i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary);
+}
 
 export async function addProduct(
   prevState: AddProductActionResult | undefined,
@@ -146,34 +166,13 @@ export async function addProduct(
     };
   }
 
-  const newProduct = new Product({
-    name,
-    price,
-    stock,
-    brand,
-    category,
-    description,
-    longDescription,
-    freeDelivery: freeDelivery === "on",
-    ageFrom,
-    ageTo,
-    photo,
-  });
-
   try {
     const uri = process.env.API_URL || "";
     const endpoint = "products";
-
     const res = await fetch(uri + endpoint, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        //Authorization: `Bearer ${API_TOKEN}`,
-      },
-      body: JSON.stringify(newProduct),
+      body: formData,
     });
-
     if (res.status === 200 || res.status === 201) {
       revalidatePath("/");
 
@@ -226,12 +225,12 @@ export async function addContactMessage(
     };
   }
 
-  const newMessage = new ContactMessage({
+  const newMessage = {
     name,
     email,
     telephone,
     message,
-  });
+  };
 
   try {
     const uri = process.env.API_URL || "";

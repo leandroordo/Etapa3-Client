@@ -26,6 +26,7 @@ const Home = async () => {
                 description={product.description}
                 photo={product.photo}
                 price={product.price}
+                contentType={product.contentType}
               />
             ))}
           </div>

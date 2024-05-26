@@ -9,6 +9,7 @@ export interface ProductInCart {
   quantity: number;
   price: number;
   photo: string;
+  contentType: string;
 }
 
 export interface Product {
@@ -17,6 +18,7 @@ export interface Product {
   description: string;
   price: number;
   photo: string;
+  contentType: string;
 }
 
 export interface ProductToAdd {

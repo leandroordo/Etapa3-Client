@@ -10,12 +10,14 @@ export default async function ProductCard({
   description,
   price,
   photo,
+  contentType,
 }: {
   id: string;
   name: string;
   description: string;
   price: number;
   photo: string;
+  contentType: string;
 }) {
   const addToCartAction = async () => {
     "use server";
@@ -25,6 +27,7 @@ export default async function ProductCard({
       description,
       price,
       photo,
+      contentType: contentType,
     });
   };
 
@@ -32,8 +35,8 @@ export default async function ProductCard({
     <div className="product__card">
       <div className="card__image">
         <Image
-          src={photo}
-          alt={photo}
+          src={`data:${contentType};base64,${photo}`}
+          alt={name}
           width={300}
           height={260}
           className="card__image-fluid"

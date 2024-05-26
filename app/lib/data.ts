@@ -23,7 +23,6 @@ export const fetchProducts = async (): Promise<Product[]> => {
     }
 
     const result: Product[] = json;
-
     return result;
   } catch (err) {
     console.log(err);
