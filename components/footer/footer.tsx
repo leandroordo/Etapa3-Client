@@ -51,13 +51,13 @@ const Footer = () => {
               <h5>Redes sociales</h5>
               <ul className="footer__list">
                 <li className="footer__listitem">
-                  <Link href="instagram.com">Instagram</Link>
+                  <Link href="https://www.instagram.com">Instagram</Link>
                 </li>
                 <li className="footer__listitem">
-                  <Link href="youtube.com">Youtube</Link>
+                  <Link href="https://www.youtube.com">Youtube</Link>
                 </li>
                 <li className="footer__listitem">
-                  <Link href="facebook.com">Facebook</Link>
+                  <Link href="https://www.facebook.com">Facebook</Link>
                 </li>
               </ul>
             </div>

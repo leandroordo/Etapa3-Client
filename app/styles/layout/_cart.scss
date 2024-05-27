@@ -5,7 +5,7 @@
   opacity: 0;
   padding: 10px 20px;
   position: absolute;
-  right: 0;
+  left: 0;
   transform: rotateX(90deg);
   transform-origin: center top 0;
   transition: all 0.5s ease 0s;
@@ -16,6 +16,11 @@
   &.active {
     opacity: 1;
     transform: rotateX(0deg);
+  }
+
+  @include respond-to("small") {
+    left: auto;
+    right: 0;
   }
 }
 
