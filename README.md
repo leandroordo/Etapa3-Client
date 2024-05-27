@@ -1,4 +1,4 @@
-﻿# Estapa 3
+﻿# Etapa 3
 
 ## Cliente
 
@@ -12,15 +12,13 @@ Se integra con Github por lo tanto, cada vez que se hace commit en la rama maste
 
 ## Variables de entorno
 
-Se definieron dos variables de entorno:
+Se definió una variable de entorno:
 
-| Variable | Valor                                                                                                                                      |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| API_URL  | <https://leandro-server.onrender.com/api/                                                                                                  |
-| MONGO    | mongodb+srv://leandroo:VlJfYh7xm28cvBvu@leandrocluster0.bwkhgnl.mongodb.net/jugueteria?retryWrites=true&w=majority&appName=LeandroCluster0 |
+| Variable | Valor                                     |
+| -------- | ----------------------------------------- |
+| API_URL  | <https://leandro-server.onrender.com/api/ |
 
 - **API_URL**: dirección donde está deployado el backend
-- **MONGO**: string de conexión a la base de datos MongoDB
 
 # NextJS
 
